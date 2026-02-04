@@ -59,7 +59,7 @@ export default function Manifesto() {
               <span className="text-yellow-400">Pure Power</span>
             </h2>
             <p className="text-xl text-white/60 font-medium leading-relaxed max-w-lg mb-8">
-              We aren't just making vegan food. We're engineering high-performance meals using 100% organic, earth-grown ingredients for the Philly hustle.
+              We aren't just making vegetarian food. We're engineering high-performance meals using 100% organic, earth-grown ingredients for the Philly hustle.
             </p>
             
             <div className="bg-white/5 p-6 border-l-4 border-yellow-400">
