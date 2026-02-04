@@ -43,8 +43,8 @@ export default function Contact() {
                 <span className="font-black uppercase tracking-tighter">{isOpen ? "Cooking Right Now" : "Kitchen's Resting"}</span>
               </div>
               <p className="text-sm opacity-70 leading-relaxed uppercase font-bold tracking-widest">
-                Mon-Thu: 7am-8pm<br />
-                Fri-Sun: 9am-5pm
+                Mon-Fri: 7am-8pm<br />
+                Sat-Sun: 9am-5pm
               </p>
             </div>
 

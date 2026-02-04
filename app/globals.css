@@ -10,3 +10,29 @@
     to { transform: translateX(-50%); }
   }
 }
+@layer utilities {
+
+  @media (max-width: 1023px) {
+    .custom-scroll::-webkit-scrollbar {
+      height: 5px; 
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #facc15; 
+      border-radius: 0px; 
+    }
+  }
+
+
+  @media (min-width: 1024px) {
+    .custom-scroll {
+      -ms-overflow-style: none;  
+      scrollbar-width: none;   
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;             
+    }
+  }
+}
