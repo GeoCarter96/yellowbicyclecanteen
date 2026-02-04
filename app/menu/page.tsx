@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 
 interface MenuItemProps {
@@ -71,7 +71,16 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, price, desc, popular }) => (
       </div>
       {desc && <p className="text-zinc-400 text-sm mt-1 max-w-xl italic">{desc}</p>}
     </div>
-    {price && <span className="text-xl font-mono text-yellow-400 ml-4">{price}</span>}
+    <div className="flex items-center gap-4 ml-4">
+      {price && <span className="text-xl font-mono text-yellow-400">{price}</span>}
+      <a 
+        href="https://yellow-bicycle-canteen.square.site" 
+        target="_blank" 
+        className="bg-white hover:bg-yellow-400 text-black text-[10px] font-black px-3 py-2 rounded uppercase transition-colors"
+      >
+        Order
+      </a>
+    </div>
   </div>
 );
 
@@ -88,6 +97,28 @@ const MenuSection: React.FC<MenuSectionProps> = ({ title, items, id }) => {
 export default function YellowBicycleMenu() {
   const [filter, setFilter] = useState<'all' | 'vegetarian'>('all');
   const [search, setSearch] = useState('');
+  const [showButton, setShowButton] = useState(false);
+
+  // Handle "Back to Top" visibility logic
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const filteredData = useMemo(() => {
     const result: Record<string, MenuItemProps[]> = {};
@@ -104,19 +135,17 @@ export default function YellowBicycleMenu() {
   }, [filter, search]);
 
   return (
-    <div className="bg-black min-h-screen text-zinc-100 font-sans pb-20">
-  <header className="py-8 text-center bg-black-900 ">
+    <div className="relative bg-black min-h-screen text-zinc-100 font-sans pb-20">
+      <header className="py-8 text-center bg-black-900 ">
         <div className="flex justify-center flex-wrap gap-x-8 gap-y-2 text-sm font-semibold text-yellow-400">
           <span>🌿 All food is vegetarian</span>
           <span>🥕 Vegan items as marked (V)</span>
           <span>✨ All items can be veganized by omitting dairy/egg</span>
-       
         </div>
       </header>
       
       <nav className="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-zinc-800 shadow-2xl">
         <div className="max-w-4xl mx-auto px-6 py-4 space-y-4">
-        
           <div className="relative">
             <input 
               type="text" 
@@ -127,13 +156,22 @@ export default function YellowBicycleMenu() {
             />
           </div>
           
-         
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex gap-2">
-              <button onClick={() => setFilter('all')} className={`px-3 py-1 text-[10px] font-black uppercase rounded-full ${filter === 'all' ? 'bg-yellow-400 text-black' : 'text-zinc-500 border border-zinc-800'}`}>All</button>
-              <button onClick={() => setFilter('vegetarian')} className={`px-3 py-1 text-[10px] font-black uppercase rounded-full ${filter === 'vegetarian' ? 'bg-green-500 text-white' : 'text-zinc-500 border border-zinc-800'}`}>Veg (V)</button>
+              <button 
+                onClick={() => setFilter('all')} 
+                className={`px-3 py-1 text-[10px] font-black uppercase rounded-full ${filter === 'all' ? 'bg-yellow-400 text-black' : 'text-zinc-500 border border-zinc-800'}`}
+              >
+                All
+              </button>
+              <button 
+                onClick={() => setFilter('vegetarian')} 
+                className={`px-3 py-1 text-[10px] font-black uppercase rounded-full ${filter === 'vegetarian' ? 'bg-green-600 text-white' : 'text-zinc-500 border border-zinc-800'}`}
+              >
+                Veg (V)
+              </button>
             </div>
-            <div className="flex gap-4 overflow-x-auto pb-1 custom-scroll">
+            <div className="flex gap-4 overflow-x-auto pb-1 custom-scrolls">
               {Object.keys(filteredData).map(key => (
                 <a key={key} href={`#${key}`} className="text-zinc-400 hover:text-yellow-400 text-[10px] font-black uppercase whitespace-nowrap">{key}</a>
               ))}
@@ -146,8 +184,21 @@ export default function YellowBicycleMenu() {
         {Object.entries(filteredData).map(([cat, items]) => (
           <MenuSection key={cat} id={cat} title={cat} items={items} />
         ))}
-        {Object.keys(filteredData).length === 0 && <div className="text-center py-20 text-zinc-500">No matches found for "{search}".</div>}
+        {Object.keys(filteredData).length === 0 && (
+          <div className="text-center py-20 text-zinc-500">No matches found for "{search}".</div>
+        )}
       </main>
+
+    
+      {showButton && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 cursor-pointer right-8 z-[60] bg-yellow-400 hover:bg-white text-black p-3 rounded-full shadow-2xl transition-all duration-300 transform active:scale-90 animate-in fade-in zoom-in"
+          aria-label="Back to Top"
+        >
+          🔝
+        </button>
+      )}
     </div>
   );
 }
