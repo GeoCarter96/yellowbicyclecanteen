@@ -62,7 +62,7 @@ export default function Home() {
         
         <div className="mt-10 flex flex-col items-center gap-4 text-white drop-shadow-md">
            <a 
-            href={`https://www.google.com`}
+            href={`https://www.google.com/search?q=yellow+bicycle+canteen&sca_esv=f8674ab91ffef830&sxsrf=ANbL-n5DzTebkHJzipq8TKysyQ-h6rMGTg%3A1770229967847&source=hp&ei=z5CDacf3MfCHptQPnoPasAk&iflsig=AFdpzrgAAAAAaYOe34TJiCFlMMhBncKPUK759PCjGZq7&gs_ssp=eJzj4tVP1zc0zDIwTipOyrMwYLRSNaiwsEw2SzZPTbFINTQwNzRIsTKoSDQ2NTYyNrJMMzNMNEk2TfQSq0zNyckvV0jKTK5MzklVSE7MK0lNzQMAXWsXhg&oq=yello&gs_lp=Egdnd3Mtd2l6IgV5ZWxsbyoCCAAyExAuGIAEGMcBGCcYigUYjgUYrwEyChAAGIAEGEMYigUyCxAAGIAEGJECGIoFMgoQABiABBhDGIoFMgoQABiABBhDGIoFMggQLhiABBixAzIIEAAYgAQYsQMyCxAuGIAEGLEDGIMBMg4QLhiABBixAxjHARivATIIEAAYgAQYsQNIxyNQ6hJY2hlwAXgAkAEAmAFsoAGsA6oBAzQuMbgBAcgBAPgBAZgCBqACwgOoAgrCAgcQIxgnGOoCwgINECMY8AUYJxjqAhieBsICChAjGPAFGCcY6gLCAhEQLhiABBixAxjRAxiDARjHAcICCxAAGIAEGLEDGIMBwgIQEC4YgAQY0QMYQxjHARiKBZgDB_EFnFc90ZA92P2SBwM1LjGgB6FHsgcDNC4xuAe7A8IHBTAuNS4xyAcQgAgA&sclient=gws-wiz`}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-10 flex flex-col items-center gap-4 text-white drop-shadow-md hover:text-yellow-400 transition-colors group"
