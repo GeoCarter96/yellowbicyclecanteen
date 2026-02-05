@@ -33,26 +33,63 @@ const menuData: Record<string, MenuItemProps[]> = {
     { name: "Chilirrito", price: "$12", desc: "House made vegan chili, cheddar, turmeric potatoes, frito chips." },
     { name: "Blackened Kale Caesar (V)", price: "$12", desc: "Spicy blackened chickpeas, tomatoes, house made croutons, shredded kale and carrots with vegan Caesar dressing, hummus." },
     { name: "Deli Wrap", price: "$10", desc: "Choice of tuna salad or egg salad with spring greens, tomato,and pickled onion in a cold wrap." },
+    { name: "Chorizo", price: "$12", desc: "Spicy lentil-cauliflower 'chorizo', tumeric rice, smoky black beans, cabbage slaw, salsa, cheddar, pickled onion. (Make it vegan with hummus)" },
+    { name: "Potato Egg", price: "$12", desc: "Roasted potatoes, salsa, fried eggs, caramelized onions and roasted peppers, smoky black beans, chipotle mayo." },
+    { name: "Breakfast Wrap", price: "$8", desc: "Two fried eggs with smoky black beans, American cheese, salsa, vegan cilantro-lime mayo, hot sauce." },
   ],
   breakfast: [
+    { name: "Bagel + Spread", price: "$5", desc: "Bagel: plain, everything, sesame, or cinnamon-raisin - Cream cheese: plain, herbed, fennel, carrot lox, or cinnamon-honey." },
     { name: "Chorizo Egg & Cheese", price: "$7", desc: "Lentil cauliflower chorizo, fried egg, spicy chipotle mayo, American cheese, bagel.", popular: true },
     { name: "Y.B. Cheesy", price: "$7", desc: "American cheese, herbed cream cheese, 2 fried eggs, bagel." },
     { name: "Sausage Egg & Cheese", price: "$7", desc: "Cauliflower-mushroom-quinoa breakfast 'sausage' crumble, fried egg, American cheese, mayo, bagel." },
     { name: "Garden Quiche Sandwich", price: "$9", desc: "Egg tart with potato, celery and tomato, American cheese, chipotle mayo, caramelized onions and peppers, fried shallots, bagel." },
+    { name: "Broccoli Cheddar Egg", price: "$7", desc: "Broccoli cheddar egg bite with mayo on a toasted bagel."},
   ],
   deli: [
     { name: "Carrot Lox", price: "$9", desc: "Smoked carrot and dill cream cheese, pickled red onion, sliced tomatoes, and celery leaves on a toasted bagel.", popular: true },
     { name: "Hummus (V)", price: "$8", desc: "Hummus, sliced cucumbers and tomatoes, pickled red onions, herb sauce, za'atar. (V) - (Add feta cheese for no extra charge), bagel." },
     { name: "Tuna Melt", price: "$10", desc: "Tuna, onions, celery, Dijon mayo, tomato, American cheese, greens." },
+    { name: "Sweet Goat", price: "$10", desc: "Goat cheese, balsamic jam, spring greens OR - Goat cheese, honey, apple slices." },
+    { name: "Egg Salad", price: "$9", desc: "Classic egg salad with Dijon mayo, onions, celery, sliced tomatoes, greens." },
+    { name: "Fennel & Tomato", price: "$7", desc: "Fennel cream cheese, sliced tomatoes, pickled red onion, sesame bagel." },
+  ],
+  sides: [
+    {name: "Garden Hash (V)", price: "$9", desc: "Sweet potato, kale, smoky black beans, caramelized onions and roasted peppers, fried shallots (V)."},
+    {name: "Hummus (V)", price: "$9", desc: "Hummus served with toasted focaccia crisps. Topped with caramelized onions, roasted red peppers and za'atar."},
+    {name: "Breakfast Hash (V)", price: "$9", desc: "Cauliflower-mushroom-quinoa breakfast 'sausage', potatoes, salsa, and caramelized onions and peppers (V)."},
+    {name: "Potato Salad", price: "$4.50", desc: "Classic dijon mayo potato salad with celery and onions."},
+    {name: "Egg Salad", price: "$4.50", desc: "Classic dijon mayo egg salad with celery and onions."},
+    {name: "Quinoa Tabbouleh", price: "$3.50", desc: "Quinoa, tomato, red onion, and cucumber. (V)"},
+  ],
+  salads:[
+    {name: "House Salad (V)", price: "$10", desc: "Spring greens, red pickled onion, sliced tomatoes and cucumbers, sunflower seeds, balsamic roasted mushrooms. (V)"},
+    {name: "Kale Caesar (V)", price: "$12", desc: "Kale, shredded carrots, tomatoes, hummus, blackened chickpeas, vegan Caesar dressing and croutons. (V)"}
+  ],
+  bigKids: [
+    { name: "Blue Honey", price: "$6", desc: "Fresh blueberries, cinnamon-honey cream cheese, cinnamon-raisin bagel."},
+    {name: "Sunny Jam Club (V)", price: "$7", desc: "Sunflower butter, sunflower seeds, strawberry, whole grain bread. (V)"},
+    {name: "The Breakfast Club", price: "$10", desc: "Maple french toast club sandwich w/ two fried eggs, cheddar."}
   ],
   soups: [
     { name: "Chili (V)", price: "$6/$8", desc: "Hearty house-made chili with garbanzo, kidney and black beans, red quinoa, carrots, and onions", popular: true },
     { name: "Curry (V)", price: "$9", desc: "Tomato and chickpea coconut curry stew with roasted veggies and coconut turmeric rice (V)" },
+    { name: "Soup Specials", price: "$6/$8", desc: "Seasonal soup specials such as borscht, carrot sunbutter, and gazpacho. Check our specials board or call ahead and ask." },
+  ],
+  sweets: [
+    {name: "Corn Bread Muffin", price: "$3"},
+    {name: "Pumpkin Spice Muffin", price: "$3.25"},
+    {name: "Banana Maple Muffin (V)", price: "$3.25"},
+    {name: "Bread Pudding Muffin", price: "$3.50"},
+    {name: "Parfait", price: "$4.50", desc: "Yogurt, honey, chocolate chips."}
   ],
   drinks: [
     { name: "Vietnamese Iced Coffee", price: "$5", desc: "Cold brew with sweetened condensed milk.", popular: true },
+    { name: "Hot Drip Coffee", price: "$2.50/3.00", desc: "Local roaster Vamo coffee beans." },
+    { name: "Cold Brew Coffee", price: "$4", desc: "Espresso style coffee." },
+    { name: "Iced Black tea", price: "$2.75" },
+    { name: "Iced Sweet Hibiscus", price: "$3.75"},
   ],
-  bottles: [{ name: "Water" }, { name: "San Pellegrino" }, { name: "Coca Cola" }],
+  bottles: [{ name: "Water" }, { name: "San Pellegrino" }, { name: "Coca Cola" }, { name: "Canada Dry" }, { name: "Sunkist" }],
   breads: [{ name: "Focaccia" }, { name: "Sourdough" }, { name: "Whole Grain" }, { name: "Brioche" }, { name: "Gluten-Free" }, { name: "*Deluxe breads +$1.50" }],
   bagels: [{ name: "Plain" }, { name: "Everything" }, { name: "Sesame" },{ name: "Cinnamon-Raisin" }]
 };
@@ -99,7 +136,7 @@ export default function YellowBicycleMenu() {
   const [search, setSearch] = useState('');
   const [showButton, setShowButton] = useState(false);
 
-  // Handle "Back to Top" visibility logic
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
