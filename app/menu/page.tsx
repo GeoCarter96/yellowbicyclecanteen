@@ -197,13 +197,13 @@ export default function YellowBicycleMenu() {
             <div className="flex gap-2">
               <button 
                 onClick={() => setFilter('all')} 
-                className={`px-3 py-1 text-[10px] font-black uppercase rounded-full ${filter === 'all' ? 'bg-yellow-400 text-black' : 'text-zinc-500 border border-zinc-800'}`}
+                className={`px-3 py-1 text-[10px] font-black uppercase cursor-pointer rounded-full ${filter === 'all' ? 'bg-yellow-400 text-black' : 'text-zinc-500 border border-zinc-800'}`}
               >
                 All
               </button>
               <button 
                 onClick={() => setFilter('vegetarian')} 
-                className={`px-3 py-1 text-[10px] font-black uppercase rounded-full ${filter === 'vegetarian' ? 'bg-green-600 text-white' : 'text-zinc-500 border border-zinc-800'}`}
+                className={`px-3 py-1 text-[10px] font-black uppercase cursor-pointer rounded-full ${filter === 'vegetarian' ? 'bg-green-600 text-white' : 'text-zinc-500 border border-zinc-800'}`}
               >
                 Veg (V)
               </button>
