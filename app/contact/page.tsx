@@ -1,9 +1,14 @@
 'use client'
-import { Phone, Instagram, Send, ChevronDown } from 'lucide-react';
+import { Phone, Instagram, Send, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: 'General', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  setSubmitted(true);
+};
 
   const phoneNumber = "215-515-3749";
   const address = "930 Locust St Philadelphia PA 19107";
@@ -60,14 +65,13 @@ export default function Contact() {
               </a>
 
               <a href="https://www.instagram.com/yellowbicyclecanteenphilly" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-5 transition-all duration-300">
-               <div className="relative flex items-center justify-center w-12 h-12 flex-shrink-0 aspect-square rounded-full border border-white/20 group-hover:border-yellow-400 group-hover:bg-yellow-400 transition-all duration-500">
-  <Instagram 
-    size={18} 
-    className="text-white group-hover:text-black transition-colors duration-300" 
-    strokeWidth={2.5} 
-  />
-</div>
-
+                <div className="relative flex items-center justify-center w-12 h-12 flex-shrink-0 aspect-square rounded-full border border-white/20 group-hover:border-yellow-400 group-hover:bg-yellow-400 transition-all duration-500">
+                  <Instagram 
+                    size={18} 
+                    className="text-white group-hover:text-black transition-colors duration-300" 
+                    strokeWidth={2.5} 
+                  />
+                </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 group-hover:text-yellow-400 transition-colors">Social</span>
                   <span className="text-xl font-black tracking-tighter text-white uppercase italic">@yellowbicyclecanteenphilly</span>
@@ -76,54 +80,82 @@ export default function Contact() {
             </div>
           </div>
 
-       
           <div className="lg:col-span-8">
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-8 md:p-12 border border-white/10 backdrop-blur-md">
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">Your Name</label>
-                <input 
-                  type="text" 
-                  placeholder="HUNGRY HUMAN" 
-                  className="bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase placeholder:opacity-20"
-                />
-              </div>
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-8 md:p-12 border border-white/10 backdrop-blur-md">
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">Your Name</label>
+                  <input 
+                    required
+                    type="text" 
+                    placeholder="HUNGRY HUMAN" 
+                    className="bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase placeholder:opacity-20"
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  />
+                </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">Email Address</label>
-                <input 
-                  type="email" 
-                  placeholder="EMAIL@DOMAIN.COM" 
-                  className="bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase placeholder:opacity-20"
-                />
-              </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">Email Address</label>
+                  <input 
+                    required
+                    type="email" 
+                    placeholder="EMAIL@DOMAIN.COM" 
+                    className="bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase placeholder:opacity-20"
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  />
+                </div>
 
-              <div className="md:col-span-2 flex flex-col gap-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">What's Up?</label>
-                <div className="relative group/select">
-                  <select className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase appearance-none cursor-pointer pr-10">
-                    <option className="bg-black">General Inquiry</option>
-                    <option className="bg-black">Catering Request</option>
-                    <option className="bg-black">Feedback / Love</option>
-                  </select>
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/40 group-hover/select:text-yellow-400 transition-colors">
-                    <ChevronDown size={18} strokeWidth={3} />
+                <div className="md:col-span-2 flex flex-col gap-2">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">What's Up?</label>
+                  <div className="relative group/select">
+                    <select 
+                      className="w-full bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase appearance-none cursor-pointer pr-10"
+                      onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                    >
+                      <option className="bg-black">General Inquiry</option>
+                      <option className="bg-black">Catering Request</option>
+                      <option className="bg-black">Feedback / Love</option>
+                    </select>
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none text-white/40 group-hover/select:text-yellow-400 transition-colors">
+                      <ChevronDown size={18} strokeWidth={3} />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="md:col-span-2 flex flex-col gap-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">Message</label>
-                <textarea 
-                  rows={4}
-                  placeholder="TELL US EVERYTHING..." 
-                  className="bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase placeholder:opacity-20 resize-none"
-                />
-              </div>
+                <div className="md:col-span-2 flex flex-col gap-2">
+                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400">Message</label>
+                  <textarea 
+                    required
+                    rows={4}
+                    placeholder="TELL US EVERYTHING..." 
+                    className="bg-transparent border-b-2 border-white/20 py-3 focus:outline-none focus:border-yellow-400 transition-colors font-bold uppercase placeholder:opacity-20 resize-none"
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  />
+                </div>
 
-              <button type="submit" className="md:col-span-2 mt-4 bg-yellow-400 hover:bg-white text-black py-6 font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
-                Send Message <Send size={20} />
-              </button>
-            </form>
+                <button type="submit" className="md:col-span-2 mt-4 bg-yellow-400 hover:bg-white text-black py-6 font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
+                  Send Message <Send size={20} />
+                </button>
+              </form>
+            ) : (
+              <div className="flex flex-col items-center justify-center text-center bg-white/5 p-12 md:p-24 border border-yellow-400/30 backdrop-blur-md">
+                <div className="bg-yellow-400 p-4 rounded-full mb-8">
+                  <CheckCircle2 size={48} className="text-black" />
+                </div>
+                <h2 className="text-5xl font-black uppercase italic tracking-tighter skew-x-[-10deg] mb-4">
+                  Message <span className="text-yellow-400">Received!</span>
+                </h2>
+                <p className="max-w-md text-sm font-bold uppercase tracking-widest opacity-70">
+                  WE'RE PROBABLY CHOPPING KALE RIGHT NOW, BUT WE'LL GET BACK TO YOU SOON. STAY HUNGRY.
+                </p>
+                <button 
+                  onClick={() => setSubmitted(false)}
+                  className="mt-10 text-[10px] font-black uppercase tracking-[0.3em] border-b-2 border-yellow-400 pb-1 hover:text-yellow-400 transition-colors"
+                >
+                  Send another one
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
